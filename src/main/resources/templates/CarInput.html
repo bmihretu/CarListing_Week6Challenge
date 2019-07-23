@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="base :: head"></head>
+
+<body>
+
+<nav th:insert="base :: navbar"></nav>
+<form action="#" th:action="@{/processCar}" th:object="${car}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+
+    Manufacturer: <input type="text" th:field="*{manufacturer}" />
+    <span th:if="${#fields.hasErrors('manfacturer')}" th:error="*{manufacturer}"/><br/>
+
+    Model: <input type="text" th:field="*{model}" />
+    <span th:if="${#fields.hasErrors('model')}" th:error="*{model}"/><br/>
+
+    Year: <input type="text" th:field="*{year}" />
+    <span th:if="${#fields.hasErrors('year')}" th:error="*{year}"/><br/>
+
+    MSRP <input type="text" th:field="*{msrp}" />
+    <span th:if="${#fields.hasErrors('msrp')}" th:error="*{msrp}"/><br/>
+
+    Category: <select th:field="*{department}" multiple>
+
+    <option th:each="category : ${categories}"
+            th:value="${category.id}"
+            th:text="category.name">
+    </option>
+</select><br/>
+
+    Image: <input type="text" th:field="*{image}" /><br/>
+
+    <input type="submit" value="Submit" />
+
+</form>
+
+<div th:insert="base :: javascript"></div>
+</body>
+
+</html>

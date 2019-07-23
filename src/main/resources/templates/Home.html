@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="base :: head"></head>
+
+<body>
+    <nav th:insert="base :: navbar"></nav>
+
+<!--<div th:text="${#lists.size(categories)>0}? 'Categories' : No Categories yet..."></div>-->
+<div th:each="category : ${categories}">
+    <h3 th:text="${category.name}"></h3>
+</div>
+
+<!--<div th:text="${#lists.size(cars)>0}? 'Cars' : No Cars yet..."></div>-->
+<div th:each="car : ${cars}">
+    <h2 th:text="${car.manufacturer}"></h2>
+    <h4 th:text="${car.model}"></h4>
+    <h4 th:text="${car.year}"></h4>
+    <span th:if="${car.image = ''}" type="hidden"></span>
+    <img th:unless="${car.image = ''}" th:src="${car.image}" alt="car picture"/>
+
+    <a th:href="@{/viewCar/{id} (id=${car.id})}">View This Car</a>
+    <a th:href="@{/updateCar/{id} (id=${car.id})}">Update This Car</a>
+    <a th:href="@{/deleteCar/{id} (id=${car.id})}">Delete This Car</a>
+</div>
+<div th:insert="base :: javascript"></div>
+</body>
+
+</html>

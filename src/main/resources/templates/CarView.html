@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="base :: head"></head>
+<body>
+
+<nav th:insert="base :: navbar"></nav>
+
+<a href="/">Back to Home</a>
+
+<h2 th:text="${car.manufacturer}"></h2>
+<h4 th:text="${car.model}"></h4>
+<h4 th:text="${car.year}"></h4>
+<span th:if="${car.image = ''}" type="hidden"></span>
+<img th:unless="${car.image = ''}" th:src="${image}" alt="car picture"/>
+
+<a th:href="@{/updateCar/{id} (id=${car.id})}">Update This Car</a>
+<a th:href="@{/deleteCar/{id} (id=${car.id})}">Delete This Car</a>
+
+<div th:insert="base :: javascript"></div>
+</body>
+</html>
