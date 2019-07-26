@@ -7,14 +7,26 @@
 
 <a href="/">Back to Home</a>
 
-<h2 th:text="${car.manufacturer}"></h2>
-<h4 th:text="${car.model}"></h4>
-<h4 th:text="${car.year}"></h4>
-<span th:if="${car.image = ''}" type="hidden"></span>
-<img th:unless="${car.image = ''}" th:src="${image}" alt="car picture"/>
+<div style="width: 800px; margin: 0 auto" class="card-group">
+    <div class="card">
 
-<a th:href="@{/updateCar/{id} (id=${car.id})}">Update This Car</a>
-<a th:href="@{/deleteCar/{id} (id=${car.id})}">Delete This Car</a>
+        <img  class="card-img-top" th:src="${car.image}" alt="No Image Available">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${car.manufacturer}"></h5>
+            <p class="card-text" th:text="${car.model}"></p>
+            <p class="card-text" th:text="${car.category.name}"></p>
+            <p class="card-text" th:text="${car.year}"></p>
+            <p class="card-text" th:field="text">$[[${car.msrp}]]</p>
+
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">
+                <a th:href="@{/updateCar/{id} (id=${car.id})}"><img width="50px" src="https://res.cloudinary.com/dmfaehjot/image/upload/v1563909923/Week6Challenge/6a4a49_0bed48313b074ac9a16bd0cae3be2f92_mv2_n2rdc4.png" alt="Update"/></a>
+                <a th:href="@{/deleteCar/{id} (id=${car.id})}"><img width="20px" src="https://res.cloudinary.com/dmfaehjot/image/upload/v1563909372/Week6Challenge/20-200586_trashcan-clipart-trashcan-clipart-backgrounds-png-freeuse-trash_bcnyvx.jpg" alt="Delete"/></a>
+            </small>
+        </div>
+    </div>
+</div>
 
 <div th:insert="base :: javascript"></div>
 </body>

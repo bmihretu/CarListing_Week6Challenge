@@ -8,13 +8,15 @@
 <form action="#" th:action="@{/processCategory}" th:object="${category}" method="post">
     <input type="hidden" th:field="*{id}"/>
 
-    Category Name: <input type="text" th:field="*{name}" />
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/><br/>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Name of Category</label>
+        <input type="text" th:field="*{name}" class="form-control" id="exampleFormControlInput1" placeholder="Trucks">
+        <p class="error-font" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/><br/>
+    </div>
 
     <input type="submit" value="Submit" />
 
 </form>
-
 <div th:insert="base :: javascript"></div>
 </body>
 </html>

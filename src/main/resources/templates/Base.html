@@ -6,14 +6,21 @@
     <title>Car Listing</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
-<nav th:fragment="navbar" >
-    <a href="/">Listing</a>
-    <a href="/CarInput">Add Car</a>
-    <a href="/CategoryInput">Add Category</a>
+<!-- Image and text Nav Bar-->
+<nav class="navbar navbar-white bg-white" th:fragment="navbar">
+    <a class="navbar-brand" href="/">
+        <!--<img src="https://res.cloudinary.com/daq1bxdgk/image/upload/v1564167043/mazda-vision-coupe-wins-2018-concept-car-of-the-year-4_wjb0yf.jpg" width="auto" height="100" class="d-inline-block align-top" alt="car image">-->
+        <span style="font-size: 30px" class="fancy-writing">Car Listing</span>
+    </a>
+    <a href="/carInput">Add New Car</a>
+    <a href="/categoryInput">Add New Category</a>
 </nav>
+<!--End of Nav Bar-->
 
 <div th:fragment="javascript">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

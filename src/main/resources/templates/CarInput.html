@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:insert="base :: head"></head>
-
 <body>
 
 <nav th:insert="base :: navbar"></nav>
+
 <form action="#" th:action="@{/processCar}" th:object="${car}" method="post">
     <input type="hidden" th:field="*{id}"/>
 
-    Manufacturer: <input type="text" th:field="*{manufacturer}" />
-    <span th:if="${#fields.hasErrors('manfacturer')}" th:error="*{manufacturer}"/><br/>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Manufacturer</label>
+        <input type="text" th:field="*{manufacturer}" class="form-control" id="exampleFormControlInput1" placeholder="Manufacturer">
+        <p class="error-font" th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}"/>
+    </div>
 
-    Model: <input type="text" th:field="*{model}" />
-    <span th:if="${#fields.hasErrors('model')}" th:error="*{model}"/><br/>
+    <div class="form-group">
+        <label for="exampleFormControlInput2">Model</label>
+        <input type="text" th:field="*{model}" class="form-control" id="exampleFormControlInput2" placeholder="Model">
+        <p class="error-font" th:if="${#fields.hasErrors('model')}" th:errors="*{model}"/>
+    </div>
 
-    Year: <input type="text" th:field="*{year}" />
-    <span th:if="${#fields.hasErrors('year')}" th:error="*{year}"/><br/>
+    <div class="form-group">
+        <label for="exampleFormControlInput3">Year</label>
+        <input type="text" th:field="*{year}" class="form-control" id="exampleFormControlInput3" placeholder="Year">
+        <p class="error-font" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"/>
+    </div>
 
-    MSRP <input type="text" th:field="*{msrp}" />
-    <span th:if="${#fields.hasErrors('msrp')}" th:error="*{msrp}"/><br/>
+    <div class="form-group">
+        <label for="exampleFormControlInput4">MSRP</label>
+        <input type="text" th:field="*{msrp}" class="form-control" id="exampleFormControlInput4" placeholder="MSRP">
+        <p class="error-font" th:if="${#fields.hasErrors('msrp')}" th:errors="*{msrp}"/>
+    </div>
 
-    Category: <select th:field="*{department}" multiple>
+    <div class="form-group">
+        <label for="exampleFormControlInput5">Image</label>
+        <input type="text" th:field="*{image}" class="form-control" id="exampleFormControlInput5" placeholder="Image">
+    </div>
 
-    <option th:each="category : ${categories}"
-            th:value="${category.id}"
-            th:text="category.name">
-    </option>
-</select><br/>
-
-    Image: <input type="text" th:field="*{image}" /><br/>
-
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Category</label>
+        <select th:field="*{category}" class="form-control" id="exampleFormControlSelect1">
+            <option th:each="category : ${categories}"
+                    th:value="${category.id}"
+                    th:text="${category.name}">
+            </option>
+        </select>
+    </div>
     <input type="submit" value="Submit" />
 
 </form>
 
 <div th:insert="base :: javascript"></div>
 </body>
-
 </html>

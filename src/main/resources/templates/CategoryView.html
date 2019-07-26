@@ -7,26 +7,35 @@
 
 <a href="/">Back to Home</a>
 
-<div th:text="${#lists.size(category.car)>0}? 'Cars' : 'There are no cars listed in this Category...'"></div>
+<h2 th:text="${#lists.size(category.car)>0}? 'Cars' : 'There are no cars listed in this Category...'"></h2>
 
-<div th:each="car : ${category.car}">
+<div class="card-group">
+    <div th:each="car : ${category.car}">
 
-    <a th:href="@{/viewCar/{id} (id=${car.id})}">
+        <a th:href="@{/viewCar/{id} (id=${car.id})}">
 
+            <div style="width: 550px;" class="card">
 
-        <h2 th:text="${car.manufacturer}"></h2>
-        <h4 th:text="${car.model}"></h4>
-        <h4 th:text="${car.year}"></h4>
-        <span th:if="${car.image = ''}" type="hidden"></span>
-        <img th:unless="${car.image = ''}" th:src="${car.image}" alt="car picture"/>
+                <img  class="card-img-top" th:src="${car.image}" alt="No Image Available">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${car.manufacturer}"></h5>
+                    <p class="card-text" th:text="${car.model}"></p>
+                    <p class="card-text" th:text="${car.year}"></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        <a th:href="@{/updateCar/{id} (id=${car.id})}"><img width="50px" src="https://res.cloudinary.com/dmfaehjot/image/upload/v1563909923/Week6Challenge/6a4a49_0bed48313b074ac9a16bd0cae3be2f92_mv2_n2rdc4.png" alt="Update"/></a>
+                        <a th:href="@{/deleteCar/{id} (id=${car.id})}"><img width="20px" src="https://res.cloudinary.com/dmfaehjot/image/upload/v1563909372/Week6Challenge/20-200586_trashcan-clipart-trashcan-clipart-backgrounds-png-freeuse-trash_bcnyvx.jpg" alt="Delete"/></a>
+                    </small>
+                </div>
+            </div>
+        </a>
+    </div>
 
-        <a th:href="@{/updateCar/{id} (id=${car.id})}">Update This Car</a>
-        <a th:href="@{/deleteCar/{id} (id=${car.id})}">Delete This Car</a>
-
-    </a>
 </div>
 
-<a th:href="@{/updateCategory/{id} (id=${category.id})}">Update This Category</a>
+<br/>
+<a style="font-weight: bold;" th:href="@{/updateCategory/{id} (id=${category.id})}">Update This Category</a>
 
 <div th:insert="base :: javascript"></div>
 </body>
